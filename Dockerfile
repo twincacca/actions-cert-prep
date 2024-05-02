@@ -1,17 +1,11 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8-slim
+# Use an official lightweight Python runtime as a parent image
+FROM python:3.9-slim
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+# Copies your code file from your action repository to the filesystem path `/` of the container
+COPY entrypoint.sh /entrypoint.sh
 
-# Copy the src directory contents into the container at /usr/src/app
-COPY src/ .
+# Makes your code file executable
+RUN chmod +x /entrypoint.sh
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
-
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+# Code file to execute when the docker container starts up
+ENTRYPOINT ["/entrypoint.sh"]

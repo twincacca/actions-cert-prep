@@ -1,13 +1,5 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
-inputs:
-   who-to-greet:  # id of input
-     description: 'Who to greet'
-     required: true
-     default: 'World'
-outputs:
-   time: # id of output
-     description: 'The time we greeted you'
+name: 'Hello World Docker Action'
+description: 'A simple "Hello World" action with Docker'
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: 'docker'
+  image: 'Dockerfile'
