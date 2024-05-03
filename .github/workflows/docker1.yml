@@ -24,4 +24,7 @@ jobs:
         git add newfile.txt
         git commit -m "Add new file via GitHub Actions"
         git push
+      env:
+        github_token: ${{ secrets.GH_TOKEN }} 
         
+          
