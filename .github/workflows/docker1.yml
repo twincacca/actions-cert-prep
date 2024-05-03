@@ -29,5 +29,5 @@ jobs:
         git commit -F message.txt
         git push
         rm message.txt
-#      env:
-#        github_token: ${{ secrets.GH_TOKEN }} 
+      env:
+        github_token: ${{ secrets.GH_TOKEN }} 
