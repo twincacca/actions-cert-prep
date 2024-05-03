@@ -16,3 +16,15 @@ jobs:
       
     - name: Run Cowsay
       run: docker run docker/whalesay cowsay "Hello, world!" > out.txt
+
+
+    - name: Commit and push changes
+      run: |
+        fortune > message.txt
+        date >> message.txt
+        git config --global user.name "twincacca"
+        git config --global user.email "twincacca@gmail.com"
+        git add .
+        git commit -F message.txt
+        git push
+        rm message.txt
