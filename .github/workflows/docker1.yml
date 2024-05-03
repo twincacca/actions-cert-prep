@@ -1,4 +1,3 @@
-
 name: Cowsay Example
 
 on:
@@ -17,16 +16,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Cache Docker layers
-      uses: actions/cache@v2
-      with:
-        path: /var/lib/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
-
-    - name: Pull Docker image
-      run: docker pull docker/whalesay
-
-
     - name: Run Cowsay
       run: docker run docker/whalesay cowsay "Hello, world!" > out.txt
 
@@ -42,3 +31,4 @@ jobs:
         rm message.txt
       env:
         github_token: ${{ secrets.GH_TOKEN }}
+
