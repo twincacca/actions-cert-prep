@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v2
       
     - name: Run Cowsay
-      run: docker run docker/whalesay cowsay "Hello, world!" > out.txt
+      run: docker run docker/whalesay cowsay "Hello, world!" 
 
 
     - name: Commit and push changes
