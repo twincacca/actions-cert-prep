@@ -17,28 +17,28 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-# optional
-#------------ chaching ----------
-   - name: Cache Docker layers
-      uses: actions/cache@v2
-      with:
-        path: /var/lib/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
-
-    - name: Pull Docker image
-      run: docker pull docker/whalesay
-#------------ chaching ----------END
-
-    - name: Run Cowsay
-      run: docker run docker/whalesay cowsay "Hello, world!" > out.txt
-
-
-    - name: Commit and push changes
-      run: |
-        date > message.txt
-        git config --global user.name "twincacca"
-        git config --global user.email "twincacca@gmail.com"
-        git add .
-        git commit -F message.txt
-        git push
-        rm message.txt
+  # optional
+  #------------ chaching ----------
+     - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /var/lib/docker
+          key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+  
+      - name: Pull Docker image
+        run: docker pull docker/whalesay
+  #------------ chaching ----------END
+  
+      - name: Run Cowsay
+        run: docker run docker/whalesay cowsay "Hello, world!" > out.txt
+  
+  
+      - name: Commit and push changes
+        run: |
+          date > message.txt
+          git config --global user.name "twincacca"
+          git config --global user.email "twincacca@gmail.com"
+          git add .
+          git commit -F message.txt
+          git push
+          rm message.txt
