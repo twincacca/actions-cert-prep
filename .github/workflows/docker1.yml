@@ -23,8 +23,9 @@ jobs:
         git config --local user.name "twincacca"
         git add newfile.txt
         git commit -m "Add new file via GitHub Actions"
-        git push
+        git push https://$GH_TOKEN@github.com/${{ github.repository }}.git HEAD:main
       env:
-        github_token: ${{ secrets.GH_TOKEN }} 
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
         
           
