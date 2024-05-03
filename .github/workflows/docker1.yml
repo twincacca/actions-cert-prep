@@ -1,33 +1,27 @@
-name: Cowsay Example
+name: Write and Push File
 
 on:
   push:
     branches:
       - main  # adjust branch name as needed
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 jobs:
-  run-cowsay:
-    name: Run Cowsay
+  write-and-push:
+    name: Write and Push File
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
       
-    - name: Run Cowsay
-      run: docker run docker/whalesay cowsay "Hello, world!" 
-
-
-    - name: Commit and push changes
+    - name: Write File
+      run: echo "This is a new file created by the GitHub Actions workflow" > newfile.txt
+      
+    - name: Commit and Push Changes
       run: |
-        date > message.txt
-        git config --global user.name "twincacca"
-        git config --global user.email "twincacca@gmail.com"
-        git add .
-        git commit -F message.txt
+        git config --local user.email "twincacca@gmail.com"
+        git config --local user.name "twincacca"
+        git add newfile.txt
+        git commit -m "Add new file via GitHub Actions"
         git push
-        rm message.txt
-      env:
-        github_token: ${{ secrets.GH_TOKEN }} 
+        
